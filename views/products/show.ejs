@@ -1,0 +1,88 @@
+<%-include("../partials/header")%> <%-include("../partials/navbar")%>
+<%-include("../partials/flash")%>
+<link rel="stylesheet" href="/css/star.css" />
+<div class="d-flex flex-row">
+  <div class="card mx-auto my-2 p-2" style="width: 30rem; height: fit-content">
+    <img src="<%=product.img%>" class="card-img-top" alt="random" />
+    <div class="card-body">
+      <h5 class="card-title"><%=product.name%></h5>
+      <h5 class="card-title">&#8377;<%=product.price%></h5>
+      <p class="card-title"><%=product.desc%></p>
+      <div class="d-flex flex-row m-1">
+        <a href="" class="btn m-1 btn-primary">Buy</a>
+
+        <form action="/user/<%=product._id%>/cart" method="POST">
+          <button class="bg-primary no-border rounded p-1 m-1">
+            Add to cart
+          </button>
+        </form>
+        <a href="/products/<%=product._id%>/edit" class="btn btn-success m-1"
+          >Edit</a
+        >
+        <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
+          <button class="btn m-1 btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="mx-auto p-2" style="width: 500px">
+    <h3 class="p-3 mb-2 bg-black text-white rounded" style="text-align: center">
+      Leave review
+    </h3>
+    <form
+      class="validated-form border rounded p-2 p-3 mb-2 bg-dark-subtle text-dark-emphasis"
+      action="/products/<%=product._id%>/review"
+      method="POST"
+      novalidate>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Comment</label>
+        <input
+          type="text"
+          class="form-control"
+          id="desc"
+          placeholder="Comment"
+          name="comment"
+          required />
+      </div>
+
+      <fieldset class="starability-basic">
+        <input
+          type="radio"
+          id="no-rate"
+          class="input-no-rate"
+          name="rating"
+          value="0"
+          checked
+          aria-label="No rating." />
+        <input type="radio" id="first-rate1" name="rating" value="1" />
+        <label for="first-rate1" title="Terrible">1 star</label>
+        <input type="radio" id="first-rate2" name="rating" value="2" />
+        <label for="first-rate2" title="Not good">2 stars</label>
+        <input type="radio" id="first-rate3" name="rating" value="3" />
+        <label for="first-rate3" title="Average">3 stars</label>
+        <input type="radio" id="first-rate4" name="rating" value="4" />
+        <label for="first-rate4" title="Very good">4 stars</label>
+        <input type="radio" id="first-rate5" name="rating" value="5" />
+        <label for="first-rate5" title="Amazing">5 stars</label>
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div class="mb-3">
+      <%for(let review of product.reviews){%>
+      <div class="card mb-2">
+        <div class="card-header text-capitalize"><%=review.user%></div>
+        <div class="card-body">
+          <p class="card-text"><%=review.comment%></p>
+
+          <p class="starability-result" data-rating="<%=review.rating%>">
+            Rated: <%=review.rating%> stars
+          </p>
+        </div>
+      </div>
+
+      <%}%>
+    </div>
+  </div>
+</div>
+
+<%-include("../partials/footercontent")%>;

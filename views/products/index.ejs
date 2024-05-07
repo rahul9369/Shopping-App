@@ -1,0 +1,21 @@
+<%-include("../partials/header")%> <%-include("../partials/navbar")%>
+<%-include("../partials/flash")%> <%-include("../partials/carousel")%>
+<div class="container d-flex flex-wrap mx-auto p-2">
+  <%for(let product of products){%>
+  <div class="card text-center mx-auto p-2 my-2" style="width: 15rem">
+    <img
+      src="<%=product.img%>"
+      class="card-img-top"
+      height="180px"
+      alt="Not found img" />
+    <div class="card-body">
+      <h4 class="card-title"><%=product.name%></h4>
+      <h6 class="card-title">&#8377;<%=product.price%></h6>
+      <p class="card-title"><%=product.desc.substring(0,60)%>.....</p>
+
+      <a href="/products/<%=product._id%>" class="btn btn-primary">More Info</a>
+    </div>
+  </div>
+  <%}%>
+</div>
+<%-include("../partials/footercontent")%>

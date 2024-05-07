@@ -1,0 +1,49 @@
+<%-include("../partials/header")%> <%-include("../partials/navbar")%>
+
+<div
+  class="mx-auto my-5 p-4 border rounded p-3 mb-2 bg-secondary-subtle text-secondary-emphasis"
+  style="width: 600px">
+  <%-include("../partials/flash")%>
+  <div
+    class="p-3 mb-2 p-3 mb-2 bg-dark text-white rounded"
+    style="text-align: center">
+    Signup
+  </div>
+  <form class="validated-form" action="/register" method="POST" novalidate>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        name="username"
+        placeholder="username"
+        required />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="email"
+        name="email"
+        required />
+    </div>
+
+    <div class="mb-3">
+      <label for="psaaward" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="password"
+        name="password"
+        required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Signup</button>
+  </form>
+</div>
+<%-include("../partials/footer")%>
