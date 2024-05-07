@@ -13,7 +13,6 @@ router.post("/register", async (req, res) => {
       email: req.body.email,
     });
     const newUser = await User.register(user, req.body.password);
-    console.log(newUser);
     req.flash("success", "Registered successfully");
     res.redirect("/products");
   } catch (e) {
