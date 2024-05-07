@@ -1,14 +1,13 @@
 <%-include("../partials/header")%> <%-include("../partials/navbar")%>
 
 <div
-  class="mx-auto my-5 p-4 border rounded p-3 mb-2 bg-secondary-subtle text-secondary-emphasis"
-  style="width: 600px">
+  class="mx-5 my-5 p-4 border rounded p-3 mb-2 bg-secondary-subtle text-secondary-emphasis">
   <div
     class="p-3 mb-2 p-3 mb-2 bg-dark text-white rounded"
     style="text-align: center">
     Add New Product
   </div>
-  <form class="validated-form" action="/products" method="POST" novalidate>
+  <form class="validated-form mx-5" action="/products" method="POST" novalidate>
     <div class="mb-3">
       <label for="img" class="form-label">Img URL</label>
       <input
